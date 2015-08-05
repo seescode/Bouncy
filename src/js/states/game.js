@@ -9,35 +9,41 @@ module.exports = Game;
 Game.prototype = {
 
   create: function () {
-    var x = (this.game.width / 2) - 100;
-    var y = (this.game.height / 2) - 50;
+    this.text = this.game.add.text(10, 10, '0 POINTS', { font: "12px Arial", fill: "#ff0044" });
 
-    this.testentity = new Player(this.game, x, y);
-    this.testentity.anchor.setTo(0.5, 0.5);
 
-    this.input.onDown.add(this.onInputDown, this);
+    this.box = this.game.add.sprite(750, 150, 'box');
+    this.qumark = this.game.add.sprite(100, 100, 'qumark');
+
+    this.game.physics.arcade.enable(this.box);
+    this.game.physics.arcade.enable(this.qumark);
+
+    this.game.physics.arcade.gravity.set(0, 500);
+
+    this.box.body.collideWorldBounds = true;
+    this.qumark.body.collideWorldBounds = true;
+
+    this.box.body.bounce.set(1);
+    this.qumark.body.bounce.set(1);
+
+    this.box.body.velocity.x = -150;
+
+    this.cursors = this.game.input.keyboard.createCursorKeys();
   },
 
   update: function () {
-    var x, y, cx, cy, dx, dy, angle, scale;
+    var me = this; //TODO make more elegant solution
+    
+    this.game.physics.arcade.collide(this.qumark, this.box, function () {
+      me.game.state.start("GameOver");
+    });
 
-    x = this.input.position.x;
-    y = this.input.position.y;
-    cx = this.world.centerX;
-    cy = this.world.centerY;
-
-    angle = Math.atan2(y - cy, x - cx) * (180 / Math.PI);
-    this.testentity.angle = angle;
-
-    dx = x - cx;
-    dy = y - cy;
-    scale = Math.sqrt(dx * dx + dy * dy) / 100;
-
-    this.testentity.scale.x = scale * 0.6;
-    this.testentity.scale.y = scale * 0.6;
-  },
-
-  onInputDown: function () {
-    this.game.state.start('Menu');
+    if (this.cursors.left.isDown) {
+      this.qumark.body.velocity.x = -200;
+    }
+    else if (this.cursors.right.isDown) {
+      this.qumark.body.velocity.x = 200;
+    }
   }
+
 };

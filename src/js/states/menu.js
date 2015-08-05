@@ -7,20 +7,17 @@ module.exports = Menu;
 Menu.prototype = {
 
   create: function () {
-    var x = this.game.width / 2;
-    var y = this.game.height / 2;
-
-    var style = { font: "65px Arial", fill: "#ffffff", align: "center" };
-
-    this.text = this.add.text(x - 300, y - 200, "Press to Start", style);
-
-    this.input.onDown.add(this.onDown, this);
+    this.cursors = this.game.input.keyboard.createCursorKeys();
+    this.title = this.game.add.text(10, 10, 'Bouncy!', { font: "12px Arial", fill: "#ff0044" });
   },
 
   update: function () {
-  },
-
-  onDown: function () {
-    this.game.state.start(playerState.currentLevel);
+    
+    if (this.cursors.left.isDown) {
+      this.game.state.start("Game");
+    }
+    else if (this.cursors.right.isDown) {
+      this.game.state.start("Game");
+    }
   }
 };
