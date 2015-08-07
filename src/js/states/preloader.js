@@ -15,6 +15,8 @@ Preloader.prototype = {
     //this.load.setPreloadSprite(this.asset);    
     this.load.image('box', 'assets/box.bmp');
     this.load.image('qumark', 'assets/qumark.bmp');
+    
+    this.load.spritesheet('spriteSheet', 'assets/sheet_characters.png', 32, 32);
   },
 
   create: function () {

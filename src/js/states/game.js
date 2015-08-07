@@ -13,7 +13,15 @@ Game.prototype = {
 
 
     this.box = this.game.add.sprite(750, 150, 'box');
-    this.qumark = this.game.add.sprite(100, 100, 'qumark');
+    //this.qumark = this.game.add.sprite(100, 100, 'qumark');
+    
+    this.qumark = this.game.add.sprite(100, 100, 'spriteSheet');
+    //this.qumark.frame = 0;
+    
+    this.qumark.animations.add('left', [12,13], 10, true);
+    this.qumark.animations.add('right', [4,5], 10, true);
+    
+    this.qumark.animations.play('left');
 
     this.game.physics.arcade.enable(this.box);
     this.game.physics.arcade.enable(this.qumark);
@@ -40,9 +48,11 @@ Game.prototype = {
 
     if (this.cursors.left.isDown) {
       this.qumark.body.velocity.x = -200;
+      this.qumark.animations.play('left');
     }
     else if (this.cursors.right.isDown) {
       this.qumark.body.velocity.x = 200;
+      this.qumark.animations.play('right');
     }
   }
 
