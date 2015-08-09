@@ -1,6 +1,6 @@
 'use strict';
 
-var game = new Phaser.Game(800, 600, Phaser.AUTO, 'bouncy-game');
+var game = new Phaser.Game(800, 640, Phaser.AUTO, 'bouncy-game');
 
 window.Utils = require('./utils');
 window.playerState = {

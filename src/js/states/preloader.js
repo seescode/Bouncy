@@ -17,6 +17,10 @@ Preloader.prototype = {
     this.load.image('qumark', 'assets/qumark.bmp');
     
     this.load.spritesheet('spriteSheet', 'assets/sheet_characters.png', 32, 32);
+    
+    
+    this.game.load.tilemap('tilemap', 'assets/FirstTileMap.json', null, Phaser.Tilemap.TILED_JSON);
+    this.game.load.image('tiles', 'assets/terrain_atlas.png');
   },
 
   create: function () {

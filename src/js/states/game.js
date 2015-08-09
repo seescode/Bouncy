@@ -11,6 +11,13 @@ Game.prototype = {
   create: function () {
     this.text = this.game.add.text(10, 10, '0 POINTS', { font: "12px Arial", fill: "#ff0044" });
 
+    this.map = this.game.add.tilemap('tilemap');
+    this.map.addTilesetImage('tiles', 'tiles');
+
+    this.layer = map.createLayer('Tile Layer 1');
+    this.layer.resizeWorld();
+    this.layer.wrap = true;
+
 
     this.box = this.game.add.sprite(750, 150, 'box');
     //this.qumark = this.game.add.sprite(100, 100, 'qumark');
