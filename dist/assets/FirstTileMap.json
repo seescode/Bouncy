@@ -33,7 +33,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"..\/..\/..\/..\/..\/Downloads\/terrain_atlas.png",
+         "image":"terrain_atlas.png",
          "imageheight":1024,
          "imagewidth":1024,
          "margin":0,

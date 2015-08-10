@@ -12,9 +12,9 @@ Game.prototype = {
     this.text = this.game.add.text(10, 10, '0 POINTS', { font: "12px Arial", fill: "#ff0044" });
 
     this.map = this.game.add.tilemap('tilemap');
-    this.map.addTilesetImage('tiles', 'tiles');
+    this.map.addTilesetImage('Tiles');
 
-    this.layer = map.createLayer('Tile Layer 1');
+    this.layer = this.map.createLayer('Tile Layer 1');
     this.layer.resizeWorld();
     this.layer.wrap = true;
 

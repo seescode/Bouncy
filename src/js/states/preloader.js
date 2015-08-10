@@ -20,7 +20,7 @@ Preloader.prototype = {
     
     
     this.game.load.tilemap('tilemap', 'assets/FirstTileMap.json', null, Phaser.Tilemap.TILED_JSON);
-    this.game.load.image('tiles', 'assets/terrain_atlas.png');
+    this.game.load.image('Tiles', 'assets/terrain_atlas.png');
   },
 
   create: function () {
