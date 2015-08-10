@@ -20,6 +20,8 @@ Preloader.prototype = {
     
     
     this.game.load.tilemap('tilemap', 'assets/FirstTileMap.json', null, Phaser.Tilemap.TILED_JSON);
+    
+    //'Tiles' matches what's in tilesets.name within FirstTileMap.json
     this.game.load.image('Tiles', 'assets/terrain_atlas.png');
   },
 

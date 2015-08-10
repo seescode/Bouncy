@@ -9,21 +9,26 @@ module.exports = Game;
 Game.prototype = {
 
   create: function () {
-    this.text = this.game.add.text(10, 10, '0 POINTS', { font: "12px Arial", fill: "#ff0044" });
 
     this.map = this.game.add.tilemap('tilemap');
+    
+
+    //'Tiles' matches what's in tilesets.name within FirstTileMap.json    
     this.map.addTilesetImage('Tiles');
 
-    this.layer = this.map.createLayer('Tile Layer 1');
-    this.layer.resizeWorld();
-    this.layer.wrap = true;
 
+    //'Tile Layer 1' matches what's in FirstTileMap.json
+    this.layer = this.map.createLayer('Tile Layer 1'); 
+    //this.layer.resizeWorld();
+    //this.layer.wrap = true;
+    
+    this.map.createLayer('Tile Layer 2');
+
+    this.text = this.game.add.text(10, 10, '0 POINTS', { font: "12px Arial", fill: "#ff0044" });
 
     this.box = this.game.add.sprite(750, 150, 'box');
-    //this.qumark = this.game.add.sprite(100, 100, 'qumark');
     
     this.qumark = this.game.add.sprite(100, 100, 'spriteSheet');
-    //this.qumark.frame = 0;
     
     this.qumark.animations.add('left', [12,13], 10, true);
     this.qumark.animations.add('right', [4,5], 10, true);
