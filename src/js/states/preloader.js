@@ -19,10 +19,12 @@ Preloader.prototype = {
     this.load.spritesheet('spriteSheet', 'assets/sheet_characters.png', 32, 32);
     
     
-    this.game.load.tilemap('tilemap', 'assets/FirstTileMap.json', null, Phaser.Tilemap.TILED_JSON);
+    this.game.load.tilemap('tilemap', 'assets/MarioTileMap.json', null, Phaser.Tilemap.TILED_JSON);
     
     //'Tiles' matches what's in tilesets.name within FirstTileMap.json
-    this.game.load.image('Tiles', 'assets/terrain_atlas.png');
+    //this.game.load.image('Tiles', 'assets/terrain_atlas.png');
+    this.game.load.image('Tiles', 'assets/super_mario.png');
+    
   },
 
   create: function () {
