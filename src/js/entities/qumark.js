@@ -1,5 +1,3 @@
-'use strict';
-
 var Qumark = function(game, x, y, cursors) {
   this.cursors = cursors;
   Phaser.Sprite.call(this, game, x, y, 'spriteSheet');

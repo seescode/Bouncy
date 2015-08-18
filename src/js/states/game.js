@@ -1,4 +1,7 @@
 var Qumark = require('../entities/qumark');
+var Box = require('../entities/box');
+var MarioTilemap = require('../tilemaps/marioTilemap');
+
 
 var Game = function () {
   this.testentity = null;
@@ -11,54 +14,20 @@ Game.prototype = {
   create: function () {
     this.cursors = this.game.input.keyboard.createCursorKeys();
     
-    this.map = this.game.add.tilemap('tilemap');
     
-
-    //'Tiles' matches what's in tilesets.name within FirstTileMap.json    
-    this.map.addTilesetImage('Tiles');
-
-
-    //'Tile Layer 1' matches what's in FirstTileMap.json
-    this.layer = this.map.createLayer('Tile Layer 1');     
-    this.layer.resizeWorld();
-    //this.layer.wrap = true;
+    this.layer = new MarioTilemap(this.game);
     
-    this.map.createFromTiles(18, null, 'coins', 'Tile Layer 1');
-    
-    
-    
-
     this.text = this.game.add.text(10, 10, '0 POINTS', { font: "12px Arial", fill: "#ff0044" });
 
 
+    //Create boxes
     this.boxes = this.game.add.group();
     this.boxes.enableBody = true;
     this.physicsBodyType = Phaser.Physics.ARCADE;
-    
-
-    //this.box = this.game.add.sprite(750, 150, 'box');
-    var box = this.boxes.create(750, 150, 'box');
-    box.name = 'a';
-    box.body.collideWorldBounds = true;
-    box.body.bounce.set(1);
-    box.body.velocity.x = -300;
-    
-    box = this.boxes.create(500, 150, 'box');
-    box.name = 'b';
-    box.body.collideWorldBounds = true;
-    box.body.bounce.set(1);
-    box.body.velocity.x = -150;
-
-    box = this.boxes.create(300, 150, 'box');
-    box.name = 'c';
-    box.body.collideWorldBounds = true;
-    box.body.bounce.set(1);
-    box.body.velocity.x = -150;
-    
-    
-
-    //this.game.physics.arcade.enable(this.box);
-    
+    new Box(this.game, 750, 150, -300, this.boxes);    
+    new Box(this.game, 500, 150, -150, this.boxes);    
+    new Box(this.game, 300, 150, -150, this.boxes);       
+     
     this.game.physics.arcade.gravity.set(0, 500);
     
     
@@ -75,8 +44,6 @@ Game.prototype = {
     
     //this says make tile 4,5,14,15 be collidable
     //Note that the texture map starts from index 1.
-    this.map.setCollisionBetween(4, 5);
-    this.map.setCollisionBetween(14, 15);
     
 //     var killCoin = function(player, coin) {
 //       //this.map.replace(1, 18, 1, 1);
