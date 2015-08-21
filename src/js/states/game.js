@@ -22,9 +22,9 @@ Game.prototype = {
 
     //Create boxes
     this.boxes = this.game.add.group();
-    this.boxes.enableBody = true;
-    this.physicsBodyType = Phaser.Physics.ARCADE;
-    
+    // this.boxes.enableBody = true;
+    // this.physicsBodyType = Phaser.Physics.ARCADE;
+    // 
     this.boxes.add(new Box(this.game, 750, 150, -300));   
     this.boxes.add(new Box(this.game, 500, 150, -150));   
     this.boxes.add(new Box(this.game, 300, 150, -150));   
@@ -66,9 +66,6 @@ Game.prototype = {
     
     this.game.physics.arcade.collide(this.qumark, this.boxes, function () {
       me.game.state.start("GameOver");
-      
-      
-      //box.tilePosition.x += 8;
     });
 
   }
