@@ -13,7 +13,8 @@ Preloader.prototype = {
 
     //this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
     //this.load.setPreloadSprite(this.asset);    
-    this.load.image('box', 'assets/box.bmp');
+    this.load.image('box', 'assets/starfield.png');
+    
     this.load.image('qumark', 'assets/qumark.bmp');
     
     this.load.spritesheet('spriteSheet', 'assets/sheet_characters.png', 32, 32);

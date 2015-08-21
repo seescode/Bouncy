@@ -24,9 +24,10 @@ Game.prototype = {
     this.boxes = this.game.add.group();
     this.boxes.enableBody = true;
     this.physicsBodyType = Phaser.Physics.ARCADE;
-    new Box(this.game, 750, 150, -300, this.boxes);    
-    new Box(this.game, 500, 150, -150, this.boxes);    
-    new Box(this.game, 300, 150, -150, this.boxes);       
+    
+    this.boxes.add(new Box(this.game, 750, 150, -300));   
+    this.boxes.add(new Box(this.game, 500, 150, -150));   
+    this.boxes.add(new Box(this.game, 300, 150, -150));   
      
     this.game.physics.arcade.gravity.set(0, 500);
     
@@ -65,6 +66,9 @@ Game.prototype = {
     
     this.game.physics.arcade.collide(this.qumark, this.boxes, function () {
       me.game.state.start("GameOver");
+      
+      
+      //box.tilePosition.x += 8;
     });
 
   }
